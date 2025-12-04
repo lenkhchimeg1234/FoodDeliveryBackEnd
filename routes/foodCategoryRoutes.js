@@ -3,15 +3,16 @@ const getFoodCategory = require("../controllers/foodCategory/getFoodCategory");
 const createFoodCategory = require("../controllers/foodCategory/createFoodCategory");
 const deleteFoodCategory = require("../controllers/foodCategory/deleteFoodCategory");
 const putFoodCategory = require("../controllers/foodCategory/putFoodCategory");
+const verifyJWT = require("../controllers/middleware/verifyJWT");
 
 const foodCategoryRouter = express.Router();
 
 foodCategoryRouter.get("/", getFoodCategory);
 
-foodCategoryRouter.put("/", putFoodCategory);
+foodCategoryRouter.put("/", verifyJWT, putFoodCategory);
 
-foodCategoryRouter.delete("/", deleteFoodCategory);
+foodCategoryRouter.delete("/:id", verifyJWT, deleteFoodCategory);
 
-foodCategoryRouter.post("/", createFoodCategory);
+foodCategoryRouter.post("/", verifyJWT, createFoodCategory);
 
 module.exports = foodCategoryRouter;

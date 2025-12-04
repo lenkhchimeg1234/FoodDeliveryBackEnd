@@ -1,5 +1,6 @@
 const UserModel = require("../../schemas/userSchema");
 const bcrypt = require("bcrypt");
+const { generateToken } = require("../middleware/generateToken");
 
 const loginUser = async (req, res) => {
   const { password } = req.body;
@@ -13,7 +14,10 @@ const loginUser = async (req, res) => {
     console.log("isPasswordMatching", isPasswordMatching);
 
     if (isPasswordMatching) {
-      res.status(200).json(`user: ${user}`);
+      const token = generateToken(user);
+      console.log("this is token", token);
+
+      res.status(200).json({ user: user, token: token });
     } else {
       res.status(400).json("Password does not match");
     }

@@ -11,9 +11,9 @@ foodRouter.get("/", getFood);
 
 foodRouter.get("/:id", getFoodList);
 
-foodRouter.put("/", putFood);
+foodRouter.put("/:id", putFood);
 
-foodRouter.delete("/", deleteFood);
+foodRouter.delete("/:id", deleteFood);
 
 foodRouter.post("/", createFood);
 
