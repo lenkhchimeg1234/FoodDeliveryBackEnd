@@ -3,15 +3,19 @@ const getFoodOrder = require("../controllers/foodOrder/getFoodOrder");
 const createFoodOrder = require("../controllers/foodOrder/createFoodOrder");
 const deleteFoodOrder = require("../controllers/foodOrder/deleteFoodOrder");
 const putFoodOrder = require("../controllers/foodOrder/putFoodOrder");
+const verifyJWT = require("../controllers/middleware/verifyJWT");
+const getOrder = require("../controllers/foodOrder/getOrder");
 
 const foodOrderRouter = express.Router();
 
 foodOrderRouter.get("/", getFoodOrder);
 
-foodOrderRouter.put("/", putFoodOrder);
+foodOrderRouter.get("/userId", getOrder);
 
-foodOrderRouter.delete("/", deleteFoodOrder);
+foodOrderRouter.put("/", verifyJWT, putFoodOrder);
 
-foodOrderRouter.post("/", createFoodOrder);
+foodOrderRouter.delete("/", verifyJWT, deleteFoodOrder);
+
+foodOrderRouter.post("/", verifyJWT, createFoodOrder);
 
 module.exports = foodOrderRouter;

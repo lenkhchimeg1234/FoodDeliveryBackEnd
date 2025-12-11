@@ -1,10 +1,14 @@
 const FoodOrderModel = require("../../schemas/foodOrderSchema");
 
-const getFoodOrder = async (req, res) => {
+const getOrder = async (req, res) => {
   try {
-   
+    const userId = req.user._id;
 
-    const data = await OrderModel.find()
+    console.log("this is undefined", userId);
+
+    const data = await OrderModel.find({
+      user: userId,
+    })
       .populate("user")
       .populate("foodOrderItems.food");
 
@@ -19,4 +23,4 @@ const getFoodOrder = async (req, res) => {
   }
 };
 
-module.exports = getFoodOrder;
+module.exports = getOrder;

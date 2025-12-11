@@ -1,4 +1,14 @@
 const { model, Schema } = require("mongoose");
+const FoodOrderItem = new Schema({
+  food: {
+    type: Schema.Types.ObjectId,
+    ref: "Food",
+  },
+  quantity: {
+    type: Number,
+    required: [true],
+  },
+});
 
 const FoodOrderSchema = new Schema(
   {
@@ -11,12 +21,16 @@ const FoodOrderSchema = new Schema(
       required: [true],
     },
     foodOrderItems: {
-      type: String,
-      required: [true],
+      type: [FoodOrderItem],
+
+      address: {
+        type: String,
+        required: [true],
+      },
     },
     status: {
       type: String,
-      required: [true],
+      enum: ["Pending", "CANCELED", "DELIVERED"],
     },
   },
   { timestamps: true }

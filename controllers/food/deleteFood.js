@@ -1,10 +1,10 @@
 const FoodModel = require("../../schemas/foodSchema");
 
 const deleteFood = async (req, res) => {
-  const { id } = req.params;
+  
 
   try {
-    await FoodModel.findByIdAndDelete(id);
+    await FoodModel.findByIdAndDelete().populate("category");
 
     res.status(200).json("Food deleted");
   } catch (err) {
