@@ -23,9 +23,12 @@ const FoodSchema = new Schema(
       type: String,
       required: [true],
     },
+    // category: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "foodcategory",
+    // },
     category: {
-      type: Schema.Types.ObjectId,
-      ref: "foodcategory",
+      type: String,
     },
   },
   { timestamps: true }

@@ -2,11 +2,10 @@ const FoodOrderModel = require("../../schemas/foodOrderSchema");
 
 const getFoodOrder = async (req, res) => {
   try {
-   
-
     const data = await OrderModel.find()
       .populate("user")
       .populate("foodOrderItems.food");
+    
 
     if (!data) {
       return res

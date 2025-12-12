@@ -2,7 +2,7 @@ const { model, Schema } = require("mongoose");
 const FoodOrderItem = new Schema({
   food: {
     type: Schema.Types.ObjectId,
-    ref: "Food",
+    ref: "food",
   },
   quantity: {
     type: Number,
