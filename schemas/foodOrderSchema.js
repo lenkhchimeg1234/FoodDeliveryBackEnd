@@ -22,15 +22,15 @@ const FoodOrderSchema = new Schema(
     },
     foodOrderItems: {
       type: [FoodOrderItem],
-
-      address: {
-        type: String,
-        required: [true],
-      },
+    },
+    address: {
+      type: String,
+      required: [true],
     },
     status: {
       type: String,
-      enum: ["Pending", "CANCELED", "DELIVERED"],
+      default: "PENDING",
+      enum: ["PENDING", "CANCELED", "DELIVERED"],
     },
   },
   { timestamps: true }

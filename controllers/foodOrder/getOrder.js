@@ -6,7 +6,7 @@ const getOrder = async (req, res) => {
 
     console.log("this is undefined", userId);
 
-    const data = await OrderModel.find({
+    const data = await FoodOrderModel.find({
       user: userId,
     })
       .populate("user")

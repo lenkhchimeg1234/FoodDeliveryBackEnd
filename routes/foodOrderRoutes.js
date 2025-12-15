@@ -10,7 +10,7 @@ const foodOrderRouter = express.Router();
 
 foodOrderRouter.get("/", getFoodOrder);
 
-foodOrderRouter.get("/userId", getOrder);
+foodOrderRouter.get("/userId", verifyJWT, getOrder);
 
 foodOrderRouter.put("/", verifyJWT, putFoodOrder);
 

@@ -2,7 +2,7 @@ const UserModel = require("../../schemas/userSchema");
 
 const getUser = async (req, res) => {
   const { id } = req.body;
-  console.log(id, "ididid");
+  // console.log(id, "ididid");
   try {
     const data = await UserModel.findById(id);
 
